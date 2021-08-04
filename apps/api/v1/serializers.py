@@ -1,8 +1,11 @@
 from rest_framework import serializers
 from apps.api.models import Poll, Question, Option, UserAnswer
+from django.conf import settings
 
 
 class PollSerializer(serializers.ModelSerializer):
+    started_at = serializers.DateTimeField(input_formats=[settings.INPUT_DATE_TIME_FORMAT, 'input_dt'])
+
     class Meta:
         model = Poll
         fields = 'id', 'name', 'started_at', 'ended_at', 'description', 'is_active', 'questions'

@@ -1,7 +1,8 @@
+import django_filters
 from django_filters import rest_framework as filters
 
 
-class PollFilterSet(filters.FilterSet):
+class PollFilterSet(django_filters.FilterSet):
     id = filters.NumberFilter()
     name = filters.CharFilter(lookup_expr='icontains')
     started_at = filters.DateTimeFromToRangeFilter()
@@ -12,6 +13,7 @@ class PollFilterSet(filters.FilterSet):
 
 class QuestionFilterSet(filters.FilterSet):
     id = filters.NumberFilter()
+    description = filters.CharFilter(lookup_expr='icontains')
     poll = filters.NumberFilter()
     type = filters.CharFilter(lookup_expr='iexact')
 

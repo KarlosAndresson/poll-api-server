@@ -1,0 +1,51 @@
+GET http://localhost:8000/api/v1/polls/
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/polls/?is_active=True
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/polls/?id=2
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/polls/?description=Проверка
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/polls/?started_at_after=2016-01-01&started_at_before=2022-01-01
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/polls/?user=1
+Content-Type: application/json
+
+###
+POST http://localhost:8000/api/v1/polls/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer b9ec7df54b01332df917affbea83a0c03aba4b66
+
+{
+  "name" : "Опрос №1",
+  "started_at" : "2021.08.04 23:16:10+03:00",
+  "description" : "Пример создания опроса",
+  "is_active" : "True",
+  "questions" : []
+}
+
+###
+PATCH http://localhost:8000/api/v1/polls/1/
+Content-Type: application/json
+Authorization: Bearer b9ec7df54b01332df917affbea83a0c03aba4b66
+
+{
+ "name" : "Опрос №1"
+}
+
+###
+DELETE http://localhost:8000/api/v1/polls/3/
+Content-Type: application/json
+Authorization: Bearer b9ec7df54b01332df917affbea83a0c03aba4b66
+
+###

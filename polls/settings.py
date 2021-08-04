@@ -155,6 +155,13 @@ MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 INTERNAL_IPS = ['127.0.0.1']
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'apps.api.token_auth.BearerAuthentication',
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 5,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+LOG_SEP = ' | '
+INPUT_DATE_TIME_FORMAT = '%Y.%m.%d %H:%M:%S%z'

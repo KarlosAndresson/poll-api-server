@@ -18,3 +18,4 @@ settings_local.py
 /.venv/
 /media/
 /collected_static/
+/logs/

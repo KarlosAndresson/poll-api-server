@@ -1,0 +1,37 @@
+GET http://localhost:8000/api/v1/answers/
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/answers/?text=ывавыа
+Content-Type: application/json
+
+###
+GET http://localhost:8000/api/v1/answers/?id=1
+Content-Type: application/json
+
+###
+POST http://localhost:8000/api/v1/answers/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "user" : 1,
+  "option" : 1,
+  "text" : "Тест",
+  "options" : []
+}
+
+###
+PATCH http://localhost:8000/api/v1/answers/5/
+Content-Type: application/json
+Authorization: Bearer b9ec7df54b01332df917affbea83a0c03aba4b66
+
+{
+ "text" : "Тест 2"
+}
+
+###
+DELETE http://localhost:8000/api/v1/answers/5/
+Content-Type: application/json
+Authorization: Bearer b9ec7df54b01332df917affbea83a0c03aba4b66
+
+###
