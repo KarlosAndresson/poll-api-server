@@ -107,9 +107,11 @@ class PollViewSet(ModelViewSet):
             self.logger.info(f'{ApiMessages.UserHasNoPermission.detail}')
             return make_api_response(ApiMessages.UserHasNoPermission, status.HTTP_403_FORBIDDEN)
 
-        # запрещаем менять дату старта опроса
+        # запрещаем менять дату старта опроса, если он уже установлен
         if request.POST.get('started_at', None):
-            alter_post_request(request=request, remove=['started_at'])
+            poll = Poll.objects.filter(pk=pk).first()
+            if poll and poll.started_at:
+                alter_post_request(request=request, remove=['started_at'])
 
         response = super(PollViewSet, self).partial_update(request, *args, **kwargs)
         return response
