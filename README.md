@@ -20,27 +20,47 @@
 3. Create folder for virtual environment: `mkdir .venv`
 4. Run `pipenv shell`
 5. Run `pipenv update`
-6. Make new secret key for Django: 
+6. Make new secret key for Django:
 
-`python3 -c 'from django.core.management.utils import get_random_secret_key; 
-print(get_random_secret_key())'`
-
+```
+python3 -c 'from django.core.management.utils import get_random_secret_key; 
+print(get_random_secret_key())'
+```
 or
 
-`python3 -c 'import secrets; print(secrets.token_urlsafe())'`
-7. Add following environment variables and put secret key, change DB settings to yours: 
+```python3 -c 'import secrets; print(secrets.token_urlsafe())'```
 
-`export DJANGO_SETTINGS_MODULE=polls.settings;export F_SECRET_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";export F_ALLOWED_HOSTS=localhost,127.0.0.1;export F_DEBUG=True;export F_DB_HOST=127.0.0.1;export F_DB_PORT=5432;export F_DB_NAME=test;export F_DB_USER=test;export F_DB_PASSWORD=test;`
+7. Add following environment variables, change secret key and DB settings to yours:
+
+```
+export DJANGO_SETTINGS_MODULE=polls.settings
+export F_SECRET_KEY="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+export F_ALLOWED_HOSTS=localhost,127.0.0.1
+export F_DEBUG=True
+export F_DB_HOST=localhost
+export F_DB_PORT=5432
+export F_DB_NAME=test
+export F_DB_USER=test
+export F_DB_PASSWORD=test
+```
+Note: reboot your OS if necessary and repeat steps 4 and 5
+
 8. Make initial migrations:
 `python3 manage.py makemigrations`
+
 9. Run migrations:
 `python3 manage.py migrate`
+
 10. Create superuser:
 `python3 manage.py createsuperuser`
+
 11. Start server with command:
 `python3 manage.py runserver`
+
 12. Open [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/)
+
 13. Samples of API requests located in folder `tests`
+
 14. For some operations (create, change, delete Polls, Questions, Options) you will need token of superuser, which can be generated in [Admin area](http://localhost:8000/admin/authtoken/). Authorization header prefix is "Bearer".
 
 
