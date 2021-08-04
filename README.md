@@ -46,7 +46,7 @@ export F_DB_PASSWORD=test
 Note: reboot your OS if necessary and repeat steps 4 and 5
 
 8. Make initial migrations:
-`python3 manage.py makemigrations`
+`python3 manage.py makemigrations api`
 
 9. Run migrations:
 `python3 manage.py migrate`

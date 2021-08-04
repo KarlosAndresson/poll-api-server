@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 class PollSerializer(serializers.ModelSerializer):
-    started_at = serializers.DateTimeField(input_formats=[settings.INPUT_DATE_TIME_FORMAT, 'input_dt'])
+    started_at = serializers.DateTimeField(input_formats=[settings.INPUT_DATE_TIME_FORMAT, 'input_dt'], required=False)
 
     class Meta:
         model = Poll
